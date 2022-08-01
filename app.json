@@ -5,6 +5,12 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+  "icon": "./front-src/assets/img/logoPreto.png",
+  "splash": {
+    "image": "./assets/img/splashScreen.png",
+    "resizeMode": "cover",
+    "backgroundColor": "#000"
+    }
   }
 }
