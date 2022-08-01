@@ -5,9 +5,9 @@ import { Home } from './front-src/screens/Home';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    
      <Home/>
-    </View>
+    
   );
 }
 
