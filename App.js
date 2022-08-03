@@ -1,21 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./front-src/screens/HomeScreen";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const navigator = createStackNavigator(
+  //Neste primeiro colchete estarão todos as telas que serão renderizadas na tela através da pilha
+  {
+    Home: HomeScreen
   },
-});
+  //Esse segundo componente fornece a primeira tela que irá aparecer e o título desta tela.
+  {
+    initialRouteName: 'Home', //indica qual é o primeiro componente que será mostrado na tela
+    defaultNavigationOptions: {
+      title: "McLE",
+      headerTitleAlign: 'center',
+    },
+  }
+);
+
+export default createAppContainer(navigator);
