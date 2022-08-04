@@ -55,24 +55,13 @@ const HomeScreen = ()=>{
             />
             <Text>Reproduzindo o valor digitado: {productSearch}</Text>
             
-            <FlatList
-                horizontal // It's the same to: horizontal = {true}
-                data = {productListAux}
-                keyExtractor={product => product.title}
-                renderItem={({ item }) =>{ 
-                    return (
-                        <View>
-                            <HorizontalProductsList 
-                                title = "Promoções"
-                                product = {item}
-                                //productList = {productList}
-                            />
-                        </View>
-                        
-                    );
-                }}
+            <HorizontalProductsList
+                title = "Promoções"
+                productList = {productListAux}
             />
-
+            
+            {/*
+            
             <View>
                 <HorizontalProductsList 
                     title = "Promoções"
@@ -91,7 +80,7 @@ const HomeScreen = ()=>{
 
             </View>
             
-            
+            */}
 
             <Text style={styles.textStyle}>
                 McLE é o acrônimo da inicial do nome dos fundadores do melhor 
