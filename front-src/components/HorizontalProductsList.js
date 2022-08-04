@@ -1,17 +1,51 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import ProductResume from './ProductResume';
+//import ProductResume from './ProductResume';
 
-const HorizontalProductsList = ({title})=>{
+//futuro argumento: , productList
+const HorizontalProductsList = ({title, product})=>{
+    console.log(product.title);
     return (
         <View>
-            <Text> {title} </Text>
+            <Text style ={styles.textHeaderStyle}> {title} </Text>
+            <ProductResume 
+                title = {product.title}
+                price = {product.price}
+                imageSource = {product.imageSource}
+            />
+            
+            {/*
+            <ProductResume
+                title = "maca"
+                price = "R$5,00/kg"
+                image = '../assets/img/productsImages/maca.jpg'
+                //campo para quantidade
+                //botão para colocar no carrinho
+            />
+
+            */}
+            
+            {/*
+            <FlatList
+                horizontal //horizontal={true}
+                //data = {productList}
+                //keyExtractor={(product)=> product.id}
+
+
+            />
+            */}
+
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     textHeaderStyle: {
-        fontSize: 30
+        fontFamily: 'Poppins',
+        fontStyle: 'normal',
+        fontWeight: '700',
+        fontSize: 18
     }
 });
 

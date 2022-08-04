@@ -1,13 +1,44 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import HorizontalProductsList from '../components/HorizontalProductsList';
+import ProductResume from '../components/ProductResume';
+
+const product1 = {
+    "title": "Maçã",
+    "imageSource": require('../assets/img/productsImages/maca.jpg'),
+    "price": "R$ 5,00/kg"
+}
+
+const product2 = {
+    "title": "Laranja",
+    "imageSource": require('../assets/img/productsImages/laranja.jpg'),
+    "price": "R$ 12,00/kg"
+}
+
+const product3 = {
+    "title": "Banana",
+    "imageSource": require('../assets/img/productsImages/banana.jpg'),
+    "price": "R$ 8,00/duzia"
+}
+/*
+const productListAux = {
+    "info1": product1,
+    "info2": product2,
+    "info3": product3
+}
+*/
+const productListAux = [
+    product1,
+    product2,
+    product3
+];
 
 const HomeScreen = ()=>{
     const [productSearch, setProductSearch] = useState('');
+
     return (
         <View>
-
             <SearchBar 
                 productSearch = {productSearch} 
                 onProductSearchChange = {
@@ -22,12 +53,45 @@ const HomeScreen = ()=>{
                     }
                 }
             />
-
             <Text>Reproduzindo o valor digitado: {productSearch}</Text>
+            
+            <FlatList
+                horizontal // It's the same to: horizontal = {true}
+                data = {productListAux}
+                keyExtractor={product => product.title}
+                renderItem={({ item }) =>{ 
+                    return (
+                        <View>
+                            <HorizontalProductsList 
+                                title = "Promoções"
+                                product = {item}
+                                //productList = {productList}
+                            />
+                        </View>
+                        
+                    );
+                }}
+            />
 
-            <HorizontalProductsList title = "Promoções"/>
-            <HorizontalProductsList title = "Departamento #1"/>
-            <HorizontalProductsList title = "Departamento #2"/>
+            <View>
+                <HorizontalProductsList 
+                    title = "Promoções"
+                    product = {product1}
+                    //productList = {productList}
+                />
+                
+                <HorizontalProductsList 
+                    title = "Departamento #1"
+                    product={product2}
+                />
+                <HorizontalProductsList 
+                    title = "Departamento #2"
+                    product ={product3}
+                />
+
+            </View>
+            
+            
 
             <Text style={styles.textStyle}>
                 McLE é o acrônimo da inicial do nome dos fundadores do melhor 
@@ -42,8 +106,8 @@ const HomeScreen = ()=>{
 
 //Style a ser ajustado
 const styles = StyleSheet.create({
-    textStyle:{
-        fontSize: 15
+    titleStyle:{
+        fontSize: 30
     }
 })
 
