@@ -30,37 +30,6 @@ const HorizontalProductsList = ({title, productList})=>{
                 }}
             />
             
-
-
-            {/*
-
-            <ProductResume 
-                title = {product.title}
-                price = {product.price}
-                imageSource = {product.imageSource}
-            />
-            
-            
-            <ProductResume
-                title = "maca"
-                price = "R$5,00/kg"
-                image = '../assets/img/productsImages/maca.jpg'
-                //campo para quantidade
-                //botão para colocar no carrinho
-            />
-
-            */}
-            
-            {/*
-            <FlatList
-                horizontal //horizontal={true}
-                //data = {productList}
-                //keyExtractor={(product)=> product.id}
-
-
-            />
-            */}
-
         </View>
     );
 }
@@ -70,7 +39,9 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins',
         fontStyle: 'normal',
         fontWeight: '700',
-        fontSize: 18
+        fontSize: 25,
+        padding:10,
+        marginTop: 10
     }
 });
 

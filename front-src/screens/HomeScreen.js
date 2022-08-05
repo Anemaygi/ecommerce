@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import HorizontalProductsList from '../components/HorizontalProductsList';
 import ProductResume from '../components/ProductResume';
@@ -21,13 +21,6 @@ const product3 = {
     "imageSource": require('../assets/img/productsImages/banana.jpg'),
     "price": "R$ 8,00/duzia"
 }
-/*
-const productListAux = {
-    "info1": product1,
-    "info2": product2,
-    "info3": product3
-}
-*/
 const productListAux = [
     product1,
     product2,
@@ -39,56 +32,44 @@ const HomeScreen = ()=>{
 
     return (
         <View>
-            <SearchBar 
-                productSearch = {productSearch} 
-                onProductSearchChange = {
-                    (newProductSearch)=>{
-                        setProductSearch(newProductSearch) 
-                        console.log(newProductSearch)
+            <ScrollView>
+                <SearchBar 
+                    productSearch = {productSearch} 
+                    onProductSearchChange = {
+                        (newProductSearch)=>{
+                            setProductSearch(newProductSearch) 
+                            console.log(newProductSearch)
+                        }
                     }
-                }
-                onProductSearchSubmit ={
-                    () => {
-                        console.log('produto buscado')
+                    onProductSearchSubmit ={
+                        () => {
+                            console.log('produto buscado')
+                        }
                     }
-                }
-            />
-            <Text>Reproduzindo o valor digitado: {productSearch}</Text>
-            
-            <HorizontalProductsList
-                title = "Promoções"
-                productList = {productListAux}
-            />
-            
-            {/*
-            
-            <View>
-                <HorizontalProductsList 
-                    title = "Promoções"
-                    product = {product1}
-                    //productList = {productList}
                 />
                 
-                <HorizontalProductsList 
-                    title = "Departamento #1"
-                    product={product2}
-                />
-                <HorizontalProductsList 
-                    title = "Departamento #2"
-                    product ={product3}
+                {/*
+                <Text>Reproduzindo o valor digitado: {productSearch}</Text>
+                */}
+
+                <HorizontalProductsList
+                    title = "Promoções"
+                    productList = {productListAux}
                 />
 
-            </View>
-            
-            */}
-
-            <Text style={styles.textStyle}>
-                McLE é o acrônimo da inicial do nome dos fundadores do melhor 
-                e-commerce feito em React-Native: 
-            </Text>
-            <Text style={styles.textStyle}>
-                Mayu, Caio, Lizandro e Eduardo 
-            </Text>
+                <HorizontalProductsList
+                    title = "Frutas"
+                    productList = {productListAux}
+                />
+                
+                <Text style={styles.textStyle}>
+                    McLE é o acrônimo da inicial dos nomes dos fundadores do melhor 
+                    e-commerce feito em React-Native: 
+                </Text>
+                <Text style={styles.textStyle}>
+                    Mayu, Caio, Lizandro e Eduardo 
+                </Text>
+            </ScrollView>
         </View>
     );
 }
