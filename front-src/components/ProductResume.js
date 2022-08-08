@@ -6,44 +6,33 @@
 */
 
 import React from 'react';
-import {View, Image, Text, StyleSheet} from 'react-native';
-import NumericInput from 'react-native-numeric-input';
+import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+//import NumericInput from 'react-native-numeric-input';
 import {FontAwesome} from '@expo/vector-icons';
-
+import { withNavigation } from 'react-navigation';
+import AddToCart from './AddToCart';
+import AmountItemInput from './AmountItemInput';
+import ProductImage from './ProductImage';
 //
 const ProductResume = ({product})=>{
     return (
         <View style = {styles.viewStyle}>
             {/*image*/}
-            <Image 
-                style = {styles.imageStyle}
-                source={product.imageSource}
+            <ProductImage
+                product = {product}
             />
             <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                {/*title*/}
-                <Text style = {{fontSize: 20, alignSelf:'flex-end'}}>{product.title}</Text>
-                <Text>Quantidade: </Text>
+                {/*title (Não está bom, está misturando título com quantidade...*/}
+                <Text style = {{fontSize: 20}}>{product.title}</Text>
+                <Text style = {{fontSize: 17, textAlignVertical: 'bottom'}}>Quantidade: </Text>
             </View>
 
             <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
                 {/*price*/}
-                <Text>{product.price}</Text>
-                <NumericInput 
-                    type='plus-minus' 
-                    minValue={0}
-                    totalWidth={100} 
-                    totalHeight={40} 
-                    iconSize={5}
-                    rounded
-                    iconStyle={{ color: 'white' }} 
-                    rightButtonBackgroundColor='green' 
-                    leftButtonBackgroundColor='gray'
-                />
+                <Text style={{fontSize:20, textAlignVertical: 'bottom'}}>{product.price}</Text>
+                <AmountItemInput product = {product}/>
             </View>
-            <View style = {{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <Text>Colocar no carrinho</Text>
-                <FontAwesome name="shopping-cart" size={35} color="black" />
-            </View>
+            <AddToCart/>
         </View>
     );
 }
@@ -66,4 +55,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default ProductResume;
+export default withNavigation(ProductResume);
