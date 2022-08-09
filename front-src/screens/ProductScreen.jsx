@@ -8,7 +8,8 @@ const ProductScreen = ({navigation})=>{
     const product = navigation.getParam('product');
     return(
         <View>
-            <Image 
+            <Image
+                style = {styles.imageStyle} 
                 source = {product.imageSource}
             />
 
@@ -22,9 +23,14 @@ const ProductScreen = ({navigation})=>{
 }
 
 const styles = StyleSheet.create({
-    styleText:{
+    textStyle:{
         fontSize: 30
-    } 
+    },
+    imageStyle:{
+        width: 300,
+        height: 250
+    }
+
 })
 
 export default ProductScreen;
